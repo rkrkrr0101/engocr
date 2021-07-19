@@ -14,10 +14,15 @@ import pandas as pd
 # In[2]:
 
 
+import string
 def convert_to_lable(data):
     alphabet = "abcdefghijklmnopqrstuvwxyz0123456789"
-    return list(map(lambda x: alphabet.index(x), data))
-convert_to_lable('afsfs')
+    alphabet28 = string.ascii_lowercase + ' _' # 26 is space, 27 is CTC blank char
+    alphabet87 = string.ascii_lowercase + string.ascii_uppercase + string.digits + ' +-*.,:!?%&$~/()[]<>"\'@#_'
+    return list(map(lambda x: alphabet87.index(x), data))
+convert_to_lable('afsfs[]')
+
+
 
 
 # In[7]:
@@ -47,7 +52,7 @@ class crnnGenerator:
                 img=cv2.imread(self.imgpath+file,cv2.IMREAD_GRAYSCALE)
                 img=cv2.resize(img,(self.imgw,self.imgh))
                 img=img.astype(np.float32)
-                img=(img / 255.0) * 2.0 - 1.0
+                img=(img / 255.0)
 
                 self.imgs[i,:,:]=img
 
@@ -87,7 +92,7 @@ class crnnGenerator:
         while True:
             xdata=np.ones([self.batch_size,self.imgw,self.imgh,1])
             ydata=np.ones([self.batch_size,self.maxlen])
-            inputlength=np.ones((self.batch_size,1))*self.inputlen   #(self.imgw//2) 최대길이
+            inputlength=np.zeros((self.batch_size,1))   #(self.imgw//2) 최대길이
             labellength=np.zeros((self.batch_size,1))
             
             for i in range(self.batch_size):
@@ -100,6 +105,7 @@ class crnnGenerator:
                     
                     
                     ydata[i][j]=k
+                inputlength[i]=self.maxlen
                 labellength[i]=len(text)
                 
             inputs={
