@@ -3,6 +3,7 @@ Retrain the YOLO model for your own dataset.
 """
 
 import numpy as np
+import tensorflow as tf
 import tensorflow.keras.backend as K
 from tensorflow.keras.layers import Input, Lambda
 from tensorflow.keras.models import Model
@@ -16,7 +17,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 def _main():
     train_path = 'train.txt'
     val_path = 'val.txt'
-    log_dir = 'logs/carMobilenet/001_Mobilenet_finetune/'
+    log_dir = 'logs/carMobilenet/002_Mobilenet_finetune/'
     classes_path = 'model_data/car_classes.txt'
     anchors_path = 'model_data/yolo_anchors.txt'
     class_names = get_classes(classes_path)
