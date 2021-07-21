@@ -1,0 +1,29 @@
+alphabet = "abcdefghijklmnopqrstuvwxyz0123456789"
+
+def convert_to_onehot(data):
+    #Creates a dict, that maps to every char of alphabet an unique int based on position
+    char_to_int = dict((c,i) for i,c in enumerate(alphabet))
+    
+    
+    encoded_data = []
+    #Replaces every char in data with the mapped int
+    encoded_data.append([char_to_int[char] for char in data])
+    
+    print(encoded_data) # Prints the int encoded array
+
+    #This part now replaces the int by an one-hot array with size alphabet
+    one_hot = []
+    for value in encoded_data:
+        #At first, the whole array is initialized with 0
+        
+        for indexvalue in value:
+            letter = [0 for _ in range(len(alphabet))]
+            #Only at the number of the int, 1 is written
+
+            letter[indexvalue] = 1
+            
+            one_hot.append(letter)
+    return one_hot
+    
+
+print(convert_to_onehot("abcd1234"))
