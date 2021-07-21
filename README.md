@@ -5,7 +5,7 @@ yolov3+crnn ocr
 현재상황(210721):
 
             yolov3모델 훈련 덜됨(20에포크에서 스탑,너무더워서 못돌리겠음)
-            crnn모델 valimage를 train으로,val을 train에서 일부 떼서 사용(메모리가 부족해서 train 못돌렸음)
+            crnn모델 valimage를 train으로,val을 train에서 일부 떼서 사용(메모리가 부족해서 train 못돌렸음),5,7에포크에서 오버핏나는거보니까 데이터셋 엄청작아서 바꾸면 성능오르긴할거같음
             
             
             
