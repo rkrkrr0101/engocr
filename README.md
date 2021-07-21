@@ -17,6 +17,14 @@ yolov3+crnn ocr
       4. crnn_preprocessing.ipynb 로 crnn cropjpg 과 label json생성 (train val 다해줘야됨)
       5. 밑의 ssd디텍터에서 crnn가중치파일 다운로드후 crnnmodeltest.ipynb에서 훈련,v5까지 잠그고 오버핏날때까지 훈련후 풀고 오버핏날때까지 훈련
       6. yolocrnn.ipynb에서 테스트
+      
+      google translate eng
+      1. Download dataset (I used textocr, see https://textvqa.org/textocr/dataset)
+      2. Create data for yolo with yolo/yolo3_json_preprocessing.ipynb (train and val must be completed)
+      3. Create a yolov3 model with yolo/yolov3/train_Mobilenet (like locking mobile net training, unlocking the fork at 30, and running the fork at 20)
+      4. Create crnn cropjpg and label json with crnn_preprocessing.ipynb (train val must be completed)
+      5. After downloading the crnn weight file from the ssd detector below, training in crnnmodeltest.ipynb, locking up to v5, training until overfitting, releasing and      training until overfitting
+      6. Test in yolocrnn.ipynb
 
 
 
