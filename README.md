@@ -2,10 +2,11 @@
 
 yolov3+crnn ocr
 
-현재(210721) yolov3모델 훈련 덜됨(20에포크에서 스탑,너무더워서 못돌리겠음)
+현재상황(210721) 
+            yolov3모델 훈련 덜됨(20에포크에서 스탑,너무더워서 못돌리겠음)
             crnn모델 valimage를 train으로,val을 train에서 일부 떼서 사용(메모리가 부족해서 train 못돌렸음)
 순서:
-  1. 데이터세트 다운로드(전 textocr사용했음)
+  1. 데이터세트 다운로드(전 textocr사용했음  https://textvqa.org/textocr/dataset  참고)
   2. yolo/yolo3_json_preprocessing.ipynb 로 yolo용 데이터생성(train,val 다해줘야됨)
   3. yolo/yolov3/train_Mobilenet 로 yolov3모델생성(모바일넷 학습잠그고 30에포크 풀고 20에포크돌리는듯)
   4. crnn_preprocessing.ipynb 로 crnn cropjpg 과 label json생성 (train val 다해줘야됨)
@@ -14,7 +15,12 @@ yolov3+crnn ocr
 
 
 기타:
-  한국어파일을 다운받긴했는데
+  한국어데이터셋을 다운받긴했는데(https://aihub.or.kr/aidata/133/download aihub페이지)
+  시작부터 라벨링 틀리고 데이터도 너무커서 다른데이터셋 찾아서 영어만 사용했음
+  다음엔 한국어데이터셋 좀 보고 라벨링 정확한지 확인해보고 한국어버전 만들어볼까싶음
+  그리고 이미지비전에서 전이학습 안하면(최소한 ocr은)진짜 지역최적점 못벗어난다는걸 알았음
+            (전부 blank값으로 채운거를 벗어날수가없음 30회정도로는,ctcloss기준(K.ctc_batch_cost 사용시) 15~16이 전부 blank로 채운값)
+  
 
 
 
